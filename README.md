@@ -5,7 +5,8 @@ Convert the ``.xls`` file to ``.csv``
 -------------------------------------
 
 I do this conversion with LibreOffice.  I have found this to handle
-extended (international) characters better.
+extended (international) characters better.  Load the ``.xls`` file
+and then ``save as...`` to CSV format.
 
    * Character set: ``Unicode (UTF-8)``
    * Field delimiter: ``,``
@@ -16,14 +17,15 @@ extended (international) characters better.
 
 Convert to JSON
 ---------------
-``python jira2moztrap <filename.csv>``
 
-This will create a ``.json`` version of that file ready to import to moztrap
+    python jira2moztrap <filename.csv>
+
+This will create a ``.json`` version of that file ready to import to MozTrap.
 
 Import to MozTrap
 -----------------
 
-The command to import to a local instance is::
+The command to import to a local instance is:
 
     ./manage.py import <product name> <version name> <file name>
 
