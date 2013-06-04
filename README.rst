@@ -8,18 +8,26 @@ Check your data
 has the data you want.  Here are a list of the fields in the spreadsheet that
 are pertinent:
 
-==============   =============
-Jira field       MozTrap Field
---------------   -------------
-Summary          Name
-Description      Description
-Pre-requisites   Prerequisites section in Description
-Notes            Notes section in Description
-Tags             Tags
-Labels           Suites
-Procedure        Instruction
-Expected Result  Expected
-===============  =============
++-----------------+--------------------------------------+
+| Jira field      | MozTrap Field                        |
++=================+======================================+
+| Summary         | Name                                 |
++-----------------+--------------------------------------+
+| Description     | Description                          |
++-----------------+--------------------------------------+
+| Pre-requisites  | Prerequisites section in Description |
++-----------------+--------------------------------------+
+| Notes           | Notes section in Description         |
++-----------------+--------------------------------------+
+| Tags            | Tags                                 |
++-----------------+--------------------------------------+
+| Labels          | Suites                               |
++-----------------+--------------------------------------+
+| Procedure       | Instruction                          |
++-----------------+--------------------------------------+
+| Expected Result |  Expected                            |
++-----------------+--------------------------------------+
+
 
 Convert the ``.xls`` file to ``.csv``
 -------------------------------------
