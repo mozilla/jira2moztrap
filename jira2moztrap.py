@@ -3,10 +3,13 @@ import json
 import sys
 import os
 
+
 def UnicodeDictReader(file, **kwargs):
     csv_reader = csv.DictReader(file, **kwargs)
     for row in csv_reader:
-        yield dict([(key, unicode(value, 'utf-8')) for key, value in row.iteritems()])
+        yield dict([(key, unicode(value, 'utf-8')) for key, value in
+                    row.iteritems()])
+
 
 def get_clean_list(data):
     clean_data = data.replace(" ", "")
@@ -15,6 +18,7 @@ def get_clean_list(data):
         return [x.lower() for x in split_data if x.strip() is not ""]
     else:
         return []
+
 
 def get_description(desc, prereq, notes=None):
     description = desc
@@ -50,7 +54,10 @@ for file in files:
             for row in tcreader:
                 case = {
                     u"name": unicode(row["Summary"]),
-                    u"description": unicode(get_description(row["Description"], row["Pre-requisites"], notes=row["Notes"])),
+                    u"description": unicode(
+                        get_description(row["Description"],
+                                        row["Pre-requisites"],
+                                        notes=row["Notes"])),
                     u"created_by": unicode("mbarone976@gmail.com"),
                     u"tags": get_clean_list(row["Tags"]),
                     u"suites": get_clean_list(row["Labels"]),
@@ -68,5 +75,3 @@ for file in files:
                 outfile.write(json.dumps(result, indent=4))
                 outfile.close()
             print file + ": " + str(len(cases))
-
-
