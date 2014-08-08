@@ -51,24 +51,28 @@ for file in files:
 
             tcreader = UnicodeDictReader(f)
             cases = []
-            for row in tcreader:
-                case = {
-                    u"name": unicode(row["Summary"]),
-                    u"description": unicode(
-                        get_description(row["Description"],
-                                        row["Pre-requisites"],
-                                        notes=row["Notes"])),
-                    u"created_by": unicode("mbarone976@gmail.com"),
-                    u"tags": get_clean_list(row["Tags"]),
-                    u"suites": get_clean_list(row["Labels"]),
-                    u"steps": [
-                        {
-                            u"instruction": unicode(row["Procedure"]),
-                            u"expected": unicode(row["Expected Result"])
+            try:
+                for row in tcreader:
+                        case = {
+                            u"name": unicode(row["Summary"]),
+                            u"description": unicode(
+                                get_description(row["Description"],
+                                                row["Pre-requisites"],
+                                                notes=row["Notes"])),
+                            u"created_by": unicode("mbarone976@gmail.com"),
+                            u"tags": get_clean_list(row["Tags"]),
+                            u"suites": get_clean_list(row["Labels"]),
+                            u"steps": [
+                                {
+                                    u"instruction": unicode(row["Procedure"]),
+                                    u"expected": unicode(row["Expected Result"])
+                                }
+                            ]
                         }
-                    ]
-                }
-                cases.append(case)
+                        cases.append(case)
+            except KeyError, e:
+                print "KeyError: please verify %s has the value %s as a column header" % (file, e)
+
             result = {"cases": cases}
 
             with open("{0}{1}".format(file[:-4], ".json"), "w") as outfile:
